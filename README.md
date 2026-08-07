@@ -199,14 +199,23 @@ Weekly demand forecasting is evaluated at product-category grain.
 - Expected on-time rate improved from 37.8% to 37.9% under the aggregate allocation model.
 - Maximum capacity utilization: 100.0%.
 
-## Screenshots
-
-Add dashboard screenshots after running the Streamlit app:
+## Screenshot Examples
 
 - Executive Overview
+  
+![Platform Home](images/platform_home.png)
+
 - Shipment Performance
+
+![Shipment Performance](images/shipment_performance.png)
+
 - Predictive Risk
+  
+![Predictive Risk](images/predictive_risk.png)
+
 - Optimization Recommendations
+
+![Optimization Recommendations](images/optimization_recommendations.png)
 
 ## Limitations
 
@@ -220,16 +229,6 @@ Add dashboard screenshots after running the Streamlit app:
 - Add warehouse labor schedules, carrier contract minimums, real weather feeds, and live ERP/WMS/TMS integrations.
 - Add model monitoring, drift checks, and calibrated alert thresholds by shipment priority.
 - Extend optimization to multi-echelon inventory and lane-level transportation constraints.
-
-## Resume-Ready Project Description
-
-- Built an end-to-end supply chain intelligence platform processing 49,992 cleaned shipments across 21 DuckDB analytical tables, with automated validation, cleaning, SQL transformations, reporting, and dashboard outputs.
-- Trained a leakage-safe late-delivery prediction model using a time-based split, achieving 0.802 ROC AUC, 0.902 PR AUC, and 0.822 recall on the held-out test period.
-- Implemented demand forecasting, inventory optimization for 960 product-warehouse combinations, and carrier-mode allocation optimization estimating $11.0M in logistics savings while preserving service reliability.
-
-## Interview Discussion Points
-
-See `docs/portfolio_talking_points.md`.
 
 ## License
 
