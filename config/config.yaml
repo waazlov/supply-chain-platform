@@ -1,0 +1,44 @@
+project:
+  name: Supply Chain Intelligence and Optimization Platform
+random_seed: 42
+paths:
+  raw_data: data/raw
+  processed_data: data/processed
+  output_data: data/output
+  database: database/supply_chain.duckdb
+  models: models
+  reports: reports
+  logs: logs
+date_range:
+  start: "2024-01-01"
+  end: "2025-12-31"
+data_generation:
+  shipments: 50000
+  products: 120
+  suppliers: 20
+  warehouses: 8
+  customers: 500
+  routes: 36
+validation:
+  shipping_cost_outlier_quantile: 0.995
+modeling:
+  test_months: 3
+  validation_months: 3
+  random_forest_estimators: 120
+  late_recall_weight: 0.65
+forecasting:
+  horizon_weeks: 12
+  evaluation_weeks: 12
+inventory:
+  service_level: 0.95
+  holding_cost_rate: 0.22
+  ordering_cost: 95.0
+  stockout_cost: 45.0
+  review_period_days: 7
+optimization:
+  max_delivery_days_standard: 7
+  capacity_buffer: 1.15
+  reliability_weight: 0.18
+dashboard:
+  default_days: 180
+

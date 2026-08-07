@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "supply-chain-intelligence-platform"
+version = "0.1.0"
+description = "End-to-end supply chain analytics, forecasting, prediction, and optimization portfolio project."
+requires-python = ">=3.12"
+readme = "README.md"
+license = { text = "MIT" }
+dependencies = [
+  "pandas>=2.2,<4.0",
+  "numpy>=1.26,<3.0",
+  "duckdb>=1.1,<2.0",
+  "scikit-learn>=1.5,<2.0",
+  "scipy>=1.13,<2.0",
+  "plotly>=5.22,<7.0",
+  "streamlit>=1.36,<2.0",
+  "pydantic>=2.7,<3.0",
+  "PyYAML>=6.0,<7.0",
+  "joblib>=1.4,<2.0"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.2,<9.0", "ruff>=0.6,<1.0"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
