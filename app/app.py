@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import plotly.express as px
 import streamlit as st
 
-from app.dashboard_utils import apply_sidebar_filters, kpi, load_csv, require_data
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from dashboard_utils import apply_sidebar_filters, kpi, load_csv, require_data
 
 st.set_page_config(page_title="Supply Chain Intelligence", layout="wide")
 st.title("Supply Chain Intelligence and Optimization Platform")

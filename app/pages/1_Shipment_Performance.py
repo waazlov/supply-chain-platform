@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
+
 import plotly.express as px
 import streamlit as st
 
-from app.dashboard_utils import apply_sidebar_filters, load_csv, require_data
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from dashboard_utils import apply_sidebar_filters, load_csv, require_data
 
 st.title("Shipment Performance")
 df = load_csv("shipment_performance_summary.csv")

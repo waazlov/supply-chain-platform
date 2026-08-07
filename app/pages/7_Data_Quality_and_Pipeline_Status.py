@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 import json
+import sys
+from pathlib import Path
 
 import plotly.express as px
 import streamlit as st
 
-from app.dashboard_utils import REPORT_DIR, load_csv, require_data
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from dashboard_utils import REPORT_DIR, load_csv, require_data
 
 st.title("Data Quality and Pipeline Status")
 issues = load_csv("data_quality_issues.csv")

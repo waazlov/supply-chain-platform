@@ -7,7 +7,6 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "data" / "output"
 REPORT_DIR = ROOT / "reports"
