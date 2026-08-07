@@ -10,7 +10,6 @@ import pandas as pd
 
 from src.utils import write_html_table
 
-
 APPROVED = {
     "transport_mode": {"Truck", "Rail", "Air", "Ocean"},
     "priority_level": {"Standard", "Expedited", "Critical"},
@@ -106,7 +105,7 @@ def validate_tables(tables: dict[str, pd.DataFrame], config: dict[str, Any]) -> 
         "outlier_counts": int(issue_df.loc[issue_df["rule"].str.contains("extreme"), "invalid_count"].sum()),
         "records_rejected": int(((shipments["quantity"] <= 0) | (shipments["shipping_cost"] < 0)).sum()),
         "records_corrected": int(shipments["carrier"].isna().sum() + (~shipments["transport_mode"].isin(APPROVED["transport_mode"]) & shipments["transport_mode"].notna()).sum()),
-        "final_valid_record_count": int(len(shipments.drop_duplicates("shipment_id"))),
+        "final_valid_record_count": len(shipments.drop_duplicates("shipment_id")),
     }])
     return QualityResult(issue_df, summary)
 

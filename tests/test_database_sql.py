@@ -5,7 +5,12 @@ from __future__ import annotations
 from pathlib import Path
 
 from src.cleaning import clean_tables
-from src.database import connect_database, export_dashboard_tables, load_tables_to_duckdb, run_sql_scripts
+from src.database import (
+    connect_database,
+    export_dashboard_tables,
+    load_tables_to_duckdb,
+    run_sql_scripts,
+)
 
 
 def test_sql_transformations_create_analytics_tables(small_tables: dict, small_config: dict) -> None:

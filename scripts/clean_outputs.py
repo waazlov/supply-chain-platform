@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-
 PATTERNS = [
     "data/raw/*.csv",
     "data/processed/*.csv",

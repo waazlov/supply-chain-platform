@@ -4,12 +4,11 @@ from __future__ import annotations
 
 import json
 import logging
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 import yaml
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONFIG_PATH = PROJECT_ROOT / "config" / "config.yaml"
@@ -23,7 +22,7 @@ def load_config(config_path: str | Path | None = None) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as file:
         config = yaml.safe_load(file)
     if not isinstance(config, dict):
-        raise ValueError(f"Configuration file must contain a mapping: {path}")
+        raise TypeError(f"Configuration file must contain a mapping: {path}")
     return config
 
 
@@ -48,7 +47,7 @@ def setup_logging(config: dict[str, Any], stage: str = "pipeline") -> Path:
     """Configure timestamped file logging and console logging."""
     log_dir = configured_path(config, "logs")
     log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = log_dir / f"{stage}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+    log_file = log_dir / f"{stage}_{datetime.now(UTC).strftime('%Y%m%d_%H%M%S')}.log"
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s %(levelname)s %(name)s - %(message)s",
@@ -83,4 +82,3 @@ def write_html_table(df, path: str | Path, title: str) -> None:
         f"<h1>{title}</h1>{df.to_html(index=False)}</body></html>"
     )
     Path(path).write_text(html, encoding="utf-8")
-

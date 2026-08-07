@@ -11,7 +11,12 @@ import pandas as pd
 from src.analytics import build_eda_report
 from src.cleaning import clean_tables
 from src.data_generation import generate_synthetic_data, write_raw_tables
-from src.database import export_dashboard_tables, load_tables_to_duckdb, run_sql_scripts, table_counts
+from src.database import (
+    export_dashboard_tables,
+    load_tables_to_duckdb,
+    run_sql_scripts,
+    table_counts,
+)
 from src.forecasting import train_demand_forecasts
 from src.ingestion import read_tables, write_tables
 from src.modeling import train_late_delivery_model
@@ -19,7 +24,6 @@ from src.optimization import optimize_inventory, optimize_shipment_allocation
 from src.reporting import generate_executive_report
 from src.utils import configured_path, ensure_directories, setup_logging, write_json
 from src.validation import save_quality_report, validate_tables
-
 
 LOGGER = logging.getLogger(__name__)
 
@@ -85,7 +89,7 @@ def run_pipeline(stage: str, config: dict[str, Any]) -> dict[str, Any]:
     if stage in {"optimize", "all"}:
         inventory = mark("inventory_optimization", lambda: optimize_inventory(tables, config, output_dir))
         allocation = mark("shipment_allocation_optimization", lambda: optimize_shipment_allocation(tables, config, output_dir))
-        summary["inventory_recommendations"] = int(len(inventory))
+        summary["inventory_recommendations"] = len(inventory)
         summary["allocation"] = allocation
     if stage in {"report", "all"}:
         reports = mark("executive_report", lambda: generate_executive_report(config))

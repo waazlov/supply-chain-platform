@@ -19,7 +19,6 @@ from src.evaluation import classification_metrics
 from src.feature_engineering import build_model_frame
 from src.utils import write_json
 
-
 NUMERIC_FEATURES = [
     "distance_km", "shipping_cost", "fuel_cost", "quantity", "unit_price", "inventory_level",
     "reorder_point", "supplier_lead_time_days", "warehouse_processing_hours", "weather_severity",
@@ -99,7 +98,7 @@ def train_late_delivery_model(tables: dict[str, pd.DataFrame], config: dict[str,
     joblib.dump(final_model, model_dir / "late_delivery_model.joblib")
     feature_metadata = {"numeric_features": NUMERIC_FEATURES, "categorical_features": CATEGORICAL_FEATURES, "selected_model": selected_name}
     write_json(feature_metadata, model_dir / "late_delivery_feature_metadata.json")
-    metrics = {"validation": validation_metrics, "test": test_metrics, "selected_model": selected_name, "test_rows": int(len(test))}
+    metrics = {"validation": validation_metrics, "test": test_metrics, "selected_model": selected_name, "test_rows": len(test)}
     write_json(metrics, model_dir / "late_delivery_metrics.json")
 
     cm = pd.DataFrame(test_metrics["confusion_matrix"], index=["Actual on time", "Actual late"], columns=["Predicted on time", "Predicted late"])

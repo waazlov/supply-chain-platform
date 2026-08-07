@@ -6,7 +6,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 TABLES = [
     "shipments", "orders", "products", "suppliers", "warehouses", "customers",
     "routes", "inventory_snapshots", "purchase_orders", "calendar",
